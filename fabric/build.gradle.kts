@@ -151,6 +151,10 @@ tasks {
     }
 
     check {
-        dependsOn("checkModDataCompat")
+        // External mod releases may not yet exist for the target Minecraft version.
+        // Keep this network-dependent audit opt-in for local builds.
+        if (providers.gradleProperty("checkModDataCompat").map(String::toBoolean).getOrElse(false)) {
+            dependsOn("checkModDataCompat")
+        }
     }
 }
