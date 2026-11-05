@@ -24,7 +24,9 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
+import net.minecraft.world.level.block.AbstractBedBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -105,11 +107,16 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock, Snea
         );
         if (bedRule.canSleep(world) && sleepingDirection != null) {
             if (!world.isClientSide()) {
-                player.startSleepInBed(pos).ifLeft(reason -> {
-                    if (reason.message() != null) {
-                        player.sendOverlayMessage(reason.message());
-                    }
-                });
+                if (!(Blocks.BED.red() instanceof AbstractBedBlock bedBlock)) {
+                    throw new IllegalStateException("Expected the vanilla red bed to be an AbstractBedBlock");
+                }
+
+                player.startSleepInBed(bedBlock, state, bedRule, pos)
+                    .ifLeft(reason -> {
+                        if (reason.message() != null) {
+                            player.sendOverlayMessage(reason.message());
+                        }
+                    });
             }
 
             return InteractionResult.SUCCESS;
@@ -119,7 +126,7 @@ public class SofaBlock extends SeatBlock implements SimpleWaterloggedBlock, Snea
     }
 
     public static BedRule modifyBedRuleForSofas(BedRule rule) {
-        return rule.canSleep() == BedRule.Rule.WHEN_DARK ? new BedRule(BedRule.Rule.ALWAYS, rule.canSetSpawn(), rule.explodes(), rule.errorMessage()) : rule;
+        return rule.canSleep() == BedRule.Rule.WHEN_DARK ? new BedRule(BedRule.Rule.ALWAYS, rule.canSetSpawn(), rule.destroyOnUse(), rule.destroyOnLeave(), rule.errorMessage()) : rule;
     }
 
     @Override

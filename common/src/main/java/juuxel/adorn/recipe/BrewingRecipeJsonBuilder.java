@@ -94,8 +94,10 @@ public final class BrewingRecipeJsonBuilder {
     public void offerTo(RecipeOutput exporter, String recipeName) {
         var key = ResourceKey.create(Registries.RECIPE, AdornCommon.id("brewing/" + recipeName));
         validate(key);
+
+        var recipeHolder = exporter.lookup(Registries.RECIPE).getOrThrow(key);
         Advancement.Builder advancementBuilder = exporter.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(key))
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeHolder))
             .rewards(AdvancementRewards.Builder.recipe(key))
             .requirements(AdvancementRequirements.Strategy.OR);
         var commonInfo = RecipeBuilder.createCraftingCommonInfo(true);

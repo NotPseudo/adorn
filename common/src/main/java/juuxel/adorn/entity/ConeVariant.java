@@ -8,7 +8,7 @@ import juuxel.adorn.util.Dyes;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.RegistryCodecs;
+import net.minecraft.core.registries.codec.RegistryCodecs;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -16,7 +16,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.resources.RegistryFixedCodec;
+import net.minecraft.core.registries.codec.RegistryFixedCodec;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -46,7 +46,7 @@ public record ConeVariant(
 
     public static final Codec<ConeVariant> CODEC = RecordCodecBuilder.create(instance -> instance.group(
         ExtraCodecs.NON_NEGATIVE_FLOAT.optionalFieldOf("weight", 1f).forGetter(ConeVariant::weight),
-        RegistryCodecs.homogeneousList(Registries.FLUID).optionalFieldOf("floats_in", HolderSet.empty()).forGetter(ConeVariant::floatsIn),
+        RegistryCodecs.holderSet(Registries.FLUID).optionalFieldOf("floats_in", HolderSet.empty()).forGetter(ConeVariant::floatsIn),
         Codec.BOOL.optionalFieldOf("can_burn", true).forGetter(ConeVariant::canBurn),
         SoundEvent.CODEC.optionalFieldOf("place_sound", DEFAULT_PLACE_SOUND).forGetter(ConeVariant::placeSound),
         ResourceKey.codec(AdornRegistryKeys.CONE_VARIANT).optionalFieldOf("appearance").forGetter(ConeVariant::appearance)

@@ -34,7 +34,6 @@ includeBuild("datagen")
 include(
     "common",
     "fabric",
-    "forge",
 )
 
 // Set up custom repositories.

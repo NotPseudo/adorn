@@ -10,7 +10,7 @@ import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.input.KeyEvent;
 import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.util.Mth;
-import org.lwjgl.glfw.GLFW;
+import com.mojang.blaze3d.platform.InputConstants;
 
 public final class ScrollEnvelope extends ScissorEnvelope {
     private static final double SHADOW_THRESHOLD = 1.0;
@@ -213,10 +213,10 @@ public final class ScrollEnvelope extends ScissorEnvelope {
     @Override
     public boolean keyPressed(KeyEvent input) {
         var scrollAmount = switch (input.input()) {
-            case GLFW.GLFW_KEY_UP -> -SCROLLING_SPEED;
-            case GLFW.GLFW_KEY_DOWN -> SCROLLING_SPEED;
-            case GLFW.GLFW_KEY_PAGE_UP -> -height;
-            case GLFW.GLFW_KEY_PAGE_DOWN -> height;
+            case InputConstants.KEY_UP -> -SCROLLING_SPEED;
+            case InputConstants.KEY_DOWN -> SCROLLING_SPEED;
+            case InputConstants.KEY_PAGEUP -> -height;
+            case InputConstants.KEY_PAGEDOWN -> height;
             default -> 0;
         };
 

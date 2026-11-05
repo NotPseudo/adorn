@@ -1,6 +1,5 @@
 package juuxel.adorn.block;
 
-import com.mojang.serialization.MapCodec;
 import juuxel.adorn.block.entity.BrewerBlockEntity;
 import juuxel.adorn.lib.AdornStats;
 import juuxel.adorn.util.ShapeRotation;
@@ -15,7 +14,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -129,8 +127,4 @@ public final class BrewerBlock extends VisibleBlockWithEntity implements BlockWi
         }
     }
 
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        throw new UnsupportedOperationException();
-    }
 }

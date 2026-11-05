@@ -1,6 +1,5 @@
 package juuxel.adorn.block;
 
-import com.mojang.serialization.MapCodec;
 import juuxel.adorn.block.entity.DrawerBlockEntity;
 import juuxel.adorn.block.entity.SimpleContainerBlockEntity;
 import juuxel.adorn.lib.AdornStats;
@@ -17,7 +16,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
@@ -118,8 +116,4 @@ public final class DrawerBlock extends VisibleBlockWithEntity implements BlockWi
         }
     }
 
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        throw new UnsupportedOperationException();
-    }
 }

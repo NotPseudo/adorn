@@ -15,6 +15,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 import org.jspecify.annotations.Nullable;
 
 public final class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity, ShelfRenderState> {
@@ -75,14 +76,14 @@ public final class ShelfRenderer implements BlockEntityRenderer<ShelfBlockEntity
         matrices.pushPose();
         matrices.translate(tx1, 9.6 / 16.0, tz1);
         matrices.scale(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
-        matrices.mulPose(Axis.YP.rotationDegrees(ITEM_1_Y_ROT + 180 - facing.toYRot()));
+        matrices.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(ITEM_1_Y_ROT + 180 - facing.toYRot())));
         state.firstItem.submit(matrices, queue, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         matrices.popPose();
 
         matrices.pushPose();
         matrices.translate(tx2, 9.6 / 16.0, tz2);
         matrices.scale(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
-        matrices.mulPose(Axis.YP.rotationDegrees(ITEM_2_Y_ROT + 180 - facing.toYRot()));
+        matrices.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(ITEM_2_Y_ROT + 180 - facing.toYRot())));
         state.secondItem.submit(matrices, queue, state.lightCoords, OverlayTexture.NO_OVERLAY, 0);
         matrices.popPose();
     }

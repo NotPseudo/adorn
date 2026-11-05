@@ -1,6 +1,5 @@
 package juuxel.adorn.block;
 
-import com.mojang.serialization.MapCodec;
 import juuxel.adorn.lib.AdornStats;
 import juuxel.adorn.platform.PlatformBridges;
 import juuxel.adorn.util.ShapeRotation;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ScheduledTickAccess;
-import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
@@ -215,8 +213,4 @@ public final class ShelfBlock extends VisibleBlockWithEntity implements SimpleWa
         return AdornBlockEntities.SHELF.get().create(pos, state);
     }
 
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        throw new UnsupportedOperationException();
-    }
 }

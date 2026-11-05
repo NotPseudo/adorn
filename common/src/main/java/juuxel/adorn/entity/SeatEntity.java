@@ -39,7 +39,7 @@ public final class SeatEntity extends Entity {
     public SeatEntity(EntityType<?> type, Level world) {
         super(type, world);
         noPhysics = true;
-        setInvulnerable(true);
+        setPermanentlyInvulnerable(true);
         seatPos = BlockPos.containing(position());
     }
 

@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 import org.jspecify.annotations.Nullable;
 
 public final class TradingStationRenderer implements BlockEntityRenderer<TradingStationBlockEntity, TradingStationRenderState> {
@@ -58,7 +59,7 @@ public final class TradingStationRenderer implements BlockEntityRenderer<Trading
         if (!trade.empty) {
             matrices.pushPose();
             matrices.translate(0.5, 1.2, 0.5);
-            matrices.mulPose(Axis.YP.rotationDegrees((state.rotationInTicks + state.tickProgress) * SELLING_ROTATION_MULTIPLIER));
+            matrices.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees((state.rotationInTicks + state.tickProgress) * SELLING_ROTATION_MULTIPLIER)));
             matrices.scale(0.6f, 0.6f, 0.6f);
             matrices.translate(0.0, 0.3, 0.0);
             trade.selling.submit(matrices, queue, light, OverlayTexture.NO_OVERLAY, 0);
@@ -86,7 +87,7 @@ public final class TradingStationRenderer implements BlockEntityRenderer<Trading
         if (dist < maxDistance * maxDistance) {
             matrices.pushPose();
             matrices.translate(x + 0.5, y + 1.5, z + 0.5);
-            matrices.mulPose(cameraState.orientation);
+            matrices.mulPose(new Matrix4f().rotation(cameraState.orientation));
             matrices.scale(+0.025f, -0.025f, +0.025f);
 
             float opacity = Minecraft.getInstance().options.getBackgroundOpacity(0.25f);

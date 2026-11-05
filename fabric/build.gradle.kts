@@ -61,7 +61,6 @@ fun registerDataGenerator(name: String, displayName: String, common: Boolean) {
                 it.projectDir.resolve("src/data").absolutePath
             })
             systemProperties.put("adorn.data.fabricConfigDirs", file("src/data").absolutePath)
-            systemProperties.put("adorn.data.neoforgeConfigDirs", project(":forge").projectDir.resolve("src/data").absolutePath)
         } else {
             systemProperties.put("adorn.data.mainConfigs", file("src/data").absolutePath)
         }

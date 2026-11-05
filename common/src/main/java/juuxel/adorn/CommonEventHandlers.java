@@ -1,6 +1,7 @@
 package juuxel.adorn;
 
 import juuxel.adorn.block.CarpetedBlock;
+import net.minecraft.world.item.component.SwingAnimation;
 import net.minecraft.world.level.block.WoolCarpetBlock;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -30,7 +31,7 @@ public final class CommonEventHandlers {
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
-                    player.swing(hand);
+                    player.swing(hand, SwingAnimation.DEFAULT, true);
                     return InteractionResult.SUCCESS;
                 }
             }

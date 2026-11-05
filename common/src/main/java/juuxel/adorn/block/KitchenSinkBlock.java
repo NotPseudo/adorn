@@ -4,6 +4,7 @@ import juuxel.adorn.block.entity.KitchenSinkBlockEntity;
 import juuxel.adorn.util.ShapeRotation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -64,7 +65,7 @@ public final class KitchenSinkBlock extends KitchenCounterBlock implements Entit
                 if (stack.isEmpty()) {
                     player.setItemInHand(hand, wetStack);
                 } else {
-                    player.getInventory().placeItemBackInInventory(wetStack);
+                    player.getInventory().placeItemBackInInventory(wetStack, Prediction.PREDICTED);
                 }
             }
         } else {

@@ -19,7 +19,6 @@ import net.minecraft.client.renderer.block.model.BlockStateModelWrapper;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.rendertype.RenderType;
-import net.minecraft.client.renderer.rendertype.RenderTypes;
 import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.ModelManager;
@@ -42,9 +41,9 @@ public final class ConeEntityRenderer extends EntityRenderer<ConeEntity, ConeEnt
     private static final RenderType DEFAULT_RENDER_TYPE = Sheets.translucentBlockItemSheet();
     private static final RenderType TRANSLUCENT_RENDER_TYPE = Sheets.cutoutBlockItemSheet();
     private static final List<RenderType> DEFAULT_RENDER_TYPES_WITHOUT_FOIL = List.of(DEFAULT_RENDER_TYPE);
-    private static final List<RenderType> DEFAULT_RENDER_TYPES_WITH_FOIL = List.of(DEFAULT_RENDER_TYPE, RenderTypes.glint());
+    private static final List<RenderType> DEFAULT_RENDER_TYPES_WITH_FOIL = List.of(DEFAULT_RENDER_TYPE, Sheets.cutoutBlockItemGlintSheet());
     private static final List<RenderType> TRANSLUCENT_RENDER_TYPES_WITHOUT_FOIL = List.of(TRANSLUCENT_RENDER_TYPE);
-    private static final List<RenderType> TRANSLUCENT_RENDER_TYPES_WITH_FOIL = List.of(TRANSLUCENT_RENDER_TYPE, RenderTypes.glintTranslucent());
+    private static final List<RenderType> TRANSLUCENT_RENDER_TYPES_WITH_FOIL = List.of(TRANSLUCENT_RENDER_TYPE, Sheets.translucentBlockItemGlintSheet());
     private static final float SIZE = 0.8f;
     private final ModelManager modelManager;
 

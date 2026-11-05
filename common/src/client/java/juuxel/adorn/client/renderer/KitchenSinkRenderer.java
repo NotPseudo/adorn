@@ -22,6 +22,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.AtlasIds;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Matrix4f;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 
@@ -79,7 +80,7 @@ public final class KitchenSinkRenderer implements BlockEntityRenderer<KitchenSin
         matrices.pushPose();
         // Rotate because the model depends on the facing property
         matrices.translate(0.5, 0.0, 0.5);
-        matrices.mulPose(Axis.YP.rotationDegrees(getRotation(state.blockState.getValue(AbstractKitchenCounterBlock.FACING))));
+        matrices.mulPose(new Matrix4f().rotation(Axis.YP.rotationDegrees(getRotation(state.blockState.getValue(AbstractKitchenCounterBlock.FACING)))));
         matrices.translate(-0.5, 0.0, -0.5);
 
         // Move vertically to correct level

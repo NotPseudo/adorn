@@ -17,6 +17,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.InterpolationHandler;
+import net.minecraft.world.entity.LinearInterpolationHandler;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.variant.VariantUtils;
@@ -33,7 +34,6 @@ import java.util.List;
 
 public final class ConeEntity extends Entity {
     private static final EntityDataAccessor<Holder<ConeVariant>> VARIANT = SynchedEntityData.defineId(ConeEntity.class, AdornTrackedDataHandlers.CONE_VARIANT.get());
-    private final InterpolationHandler interpolator = new InterpolationHandler(this);
 
     public ConeEntity(EntityType<?> type, Level world) {
         super(type, world);
@@ -45,8 +45,8 @@ public final class ConeEntity extends Entity {
     }
 
     @Override
-    public InterpolationHandler getInterpolation() {
-        return interpolator;
+    protected InterpolationHandler createInterpolationHandler() {
+        return LinearInterpolationHandler.create(this);
     }
 
     @Override
@@ -67,7 +67,7 @@ public final class ConeEntity extends Entity {
     @Override
     public void tick() {
         super.tick();
-        interpolator.interpolate();
+        getInterpolation().interpolate();
 
         if (canSimulateMovement()) {
             travel();

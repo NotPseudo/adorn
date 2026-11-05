@@ -27,6 +27,7 @@ import net.minecraft.world.item.component.TooltipProvider;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.FarmlandBlock;
@@ -125,9 +126,9 @@ public final class WateringCanItem extends Item {
         var block = state.getBlock();
 
         if (fertilizerLevel > 0 && world.getRandom().nextInt(9) == 0) {
-            if (block instanceof BonemealableBlock fertilizable && fertilizable.isValidBonemealTarget(world, pos, state)) {
-                if (world instanceof ServerLevel serverWorld && fertilizable.isBonemealSuccess(world, world.getRandom(), pos, state)) {
-                    fertilizable.performBonemeal(serverWorld, world.getRandom(), pos, state);
+            if (block instanceof BonemealableBlock fertilizable && fertilizable.isValidBonemealTarget(world, pos, state, BonemealSource.INTERACTION)) {
+                if (world instanceof ServerLevel serverWorld && fertilizable.isBonemealSuccess(world, world.getRandom(), pos, state, BonemealSource.INTERACTION)) {
+                    fertilizable.performBonemeal(serverWorld, world.getRandom(), pos, state, BonemealSource.INTERACTION);
                 }
 
                 world.levelEvent(player, LevelEvent.PARTICLES_AND_SOUND_PLANT_GROWTH, pos, 5);

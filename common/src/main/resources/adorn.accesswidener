@@ -40,7 +40,7 @@ accessible class net/minecraft/world/level/block/entity/BlockEntityType$BlockEnt
 accessible method net/minecraft/world/level/block/entity/BlockEntityType <init> (Lnet/minecraft/world/level/block/entity/BlockEntityType$BlockEntitySupplier;Ljava/util/Set;)V
 
 # Screens
-accessible method net/minecraft/client/gui/GuiGraphicsExtractor innerBlit (Lcom/mojang/blaze3d/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIFFFFI)V
+accessible method net/minecraft/client/gui/GuiGraphicsExtractor innerBlit (Lcom/mojang/renderpearl/api/pipeline/RenderPipeline;Lnet/minecraft/resources/Identifier;IIIIFFFFI)V
 accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setInput (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
 accessible method net/minecraft/client/gui/screens/recipebook/GhostSlots setResult (Lnet/minecraft/world/inventory/Slot;Lnet/minecraft/util/context/ContextMap;Lnet/minecraft/world/item/crafting/display/SlotDisplay;)V
 accessible field net/minecraft/client/gui/components/AbstractSelectionList MENU_LIST_BACKGROUND Lnet/minecraft/resources/Identifier;
