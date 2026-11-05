@@ -8,6 +8,12 @@
 
 <p>&nbsp;</p>
 
+## Credits
+- [Original Adorn mod](https://github.com/Juuxel/Adorn) made by Juuxel
+
+## Generative AI Disclaimer
+- This Fabric 26.X port was updated with the assistance of Generative AI
+
 ## Screenshots
 ![](https://i.imgur.com/tQbDWVY.jpg)
 ![](https://i.imgur.com/lUifqTY.png)
